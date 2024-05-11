@@ -6,32 +6,11 @@
 
 <p>RIP chromebook enjoy this while you watch it dying</p>
 
-<!-- Embedding local video file without default controls -->
-<video id="myVideo" width="100%" height="100%" autoplay>
+<!-- Embedding local video file with autoplay -->
+<video width="100%" height="100%" autoplay>
   <source src="rickroll.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
-
-<p id="demo"></p>
-
-<script>
-// Get the video element
-var video = document.getElementById('myVideo');
-
-// Play the video automatically
-video.play();
-
-// Prevent pausing the video
-video.addEventListener('pause', function(event) {
-  event.preventDefault(); // Prevent the default pause behavior
-  video.play(); // Resume the video immediately
-});
-
-// Save data to localStorage when leaving the page
-window.onbeforeunload = function() {
-  localStorage.setItem('pageLeft', 'true');
-};
-</script>
 
 </body>
 </html>
