@@ -31,11 +31,6 @@ video.addEventListener('pause', function(event) {
 window.onbeforeunload = function() {
   localStorage.setItem('pageLeft', 'true');
 };
-
-// Reload the page every 1 second (for demonstration purposes only)
-setTimeout(function() {
-  location.reload();
-}, 1000);
 </script>
 
 </body>
