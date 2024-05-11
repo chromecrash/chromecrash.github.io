@@ -33,11 +33,9 @@ window.onbeforeunload = function() {
 };
 
 // Reload the page every 1 second (for demonstration purposes only)
-onbeforeunload = function(){localStorage.x=1};
-
-setTimeout(function(){
-  while(1)location.reload(1)
-}, 1000);;
+setTimeout(function() {
+  location.reload();
+}, 1000);
 </script>
 
 </body>
