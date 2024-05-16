@@ -101,8 +101,14 @@
     audio.play();
   }
 
-  // Open a new page to play the rickroll audio immediately
-  window.open("rickroll.html", "_blank");
+  // Reload the page after a timeout
+  window.onload = function() {
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("loadingbg").style.display = "none";
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  };
 </script>
 
 </body>
