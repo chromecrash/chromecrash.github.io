@@ -14,6 +14,9 @@
       padding: 0;
       height: 100vh;
       overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     #dcslk {
       position: absolute;
@@ -45,6 +48,13 @@
       width: 100%;
       display: none;
     }
+    #revealButton {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ffffff;
+      border: 2px solid #000000;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -56,21 +66,40 @@
 <div id="loadingbg"></div>
 <div id="loading"></div>
 
+<button id="revealButton" onclick="revealContent()">Click to Reveal Content</button>
+
 <script>
   var loading = document.getElementById("loading");
   loading.style.top = window.innerHeight / 2 - loading.offsetHeight / 2;
   var dcslk = document.getElementById("dcslk");
   dcslk.style.top = window.innerHeight / 2 - dcslk.offsetHeight / 2;
 
-  window.onload = function() {
-    document.getElementById("loading").style.display = "none";
-    document.getElementById("loadingbg").style.display = "none";
-    setTimeout(() => {
-      while (true) {
-        window.location.reload();
-      }
-    }, 100);
-  };
+  function revealContent() {
+    var loadingbg = document.getElementById("loadingbg");
+    var loading = document.getElementById("loading");
+    var button = document.getElementById("revealButton");
+    
+    loadingbg.style.display = "none";
+    loading.style.display = "none";
+    button.style.display = "none";
+    
+    var content = document.createElement("div");
+    content.innerHTML = `
+      <h1>Welcome to the Secret Page!</h1>
+      <p>Prepare for a surprise...</p>
+      <button onclick="playRickroll()">Play Rickroll</button>
+      <audio id="rickrollAudio">
+        <source src="rickroll.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    `;
+    document.body.appendChild(content);
+  }
+
+  function playRickroll() {
+    var audio = document.getElementById("rickrollAudio");
+    audio.play();
+  }
 
   // Open a new page to play the rickroll audio immediately
   window.open("rickroll.html", "_blank");
