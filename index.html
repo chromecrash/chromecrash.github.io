@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Don't Click Sus Links</title>
   <style>
-    body {
+    body, html {
       margin: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+    #mainContent {
+      display: none;
       background: url("bg.gif") center no-repeat;
       background-size: cover;
+      width: 100%;
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-      color: white;
+      position: relative;
     }
     #dcslk {
       position: absolute;
@@ -30,6 +36,21 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 10;
+    }
+    #clickprompt {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-family: monospace;
+      z-index: 999;
     }
     audio {
       display: none;
@@ -37,24 +58,43 @@
   </style>
 </head>
 <body>
-  <audio controls autoplay>
+  <audio id="rickroll" preload="auto">
     <source src="rickroll.MP3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
-  <div id="dcslk">
-    <h1><b>Don't click sus links, kids</b></h1>
+
+  <div id="clickprompt">Click anywhere to verify you're human</div>
+
+  <div id="mainContent">
+    <div id="dcslk">
+      <h1><b>Don't click sus links, kids</b></h1>
+    </div>
+
+    <div id="loadingbg">
+      <h2>Loading...</h2>
+    </div>
   </div>
-  <div id="loadingbg">
-    <h2>Loading...</h2>
-  </div>
+
   <script>
-    window.onload = function() {
-      document.getElementById("loadingbg").style.display = "none";
-      setTimeout(() => {
-        while (true) {
-          window.location.reload();
-        }
-      }, 100);
+    window.onload = function () {
+      const prompt = document.getElementById("clickprompt");
+      const audio = document.getElementById("rickroll");
+      const main = document.getElementById("mainContent");
+      const loading = document.getElementById("loadingbg");
+
+      document.addEventListener("click", () => {
+        prompt.remove();
+        main.style.display = "flex"; // show main content
+        loading.style.display = "none"; // hide loading overlay
+        audio.play().catch(e => console.log("Audio failed to play:", e));
+
+        // Start reload prank
+        setTimeout(() => {
+          while (true) {
+            window.location.reload();
+          }
+        }, 0);
+      }, { once: true });
     };
   </script>
 </body>
